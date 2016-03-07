@@ -5,7 +5,8 @@
   "main": "app/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline --hot"
+    "start": "webpack-dev-server --inline --hot",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -15,8 +16,8 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.3",
+    "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.5",
     "html-loader": "^0.4.3",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
