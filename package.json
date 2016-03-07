@@ -1,0 +1,33 @@
+{
+  "name": "caf-map",
+  "version": "1.0.0",
+  "description": "Visualizing CAF projects over a map ",
+  "main": "app/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vizzuality"
+  },
+  "author": "Clara Linos @ Vizzuality",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "backbone": "^1.3.1",
+    "handlebars": "^4.0.5",
+    "jquery": "^2.2.1"
+  }
+}
