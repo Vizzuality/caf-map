@@ -8,18 +8,18 @@ module.exports = {
 
   entry:  './app',
   output: {
-    path:     'builds',
-    filename: 'bundle.js',
-    publicPath: 'builds/'
+    path:     'public',
+    filename: 'main.js',
+    publicPath: 'public/'
   },
 
   plugins: plugins,
 
   module: {
     loaders: [
-      { test:   /\.scss/, loader: ExtractPlugin.extract('style', 'css!sass') },
-      { test:   /\.html/, loader: 'html' },
-      { test:   /\.(png|gif|jpe?g|svg)$/i, loader: 'url' }
+      { test: /\.scss/, loader: ExtractPlugin.extract('style', 'css!sass') },
+      { test: /\.html/, loader: 'html' },
+      { test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url' }
     ]
   }
 };
