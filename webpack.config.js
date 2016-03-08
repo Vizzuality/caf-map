@@ -1,3 +1,4 @@
+var path = require('path');
 var ExtractPlugin = require('extract-text-webpack-plugin');
 
 var plugins = [
@@ -6,11 +7,12 @@ var plugins = [
 
 module.exports = {
 
-  entry:  './app',
+  context: path.join(__dirname, 'app'),
+
+  entry:  ['./app.js', './index.html'],
   output: {
-    path:     'public',
-    filename: 'main.js',
-    publicPath: 'public/'
+    path:     path.join(__dirname, 'build'),
+    filename: 'main.js'
   },
 
   plugins: plugins,
@@ -18,8 +20,10 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.scss/, loader: ExtractPlugin.extract('style', 'css!sass') },
-      { test: /\.html/, loader: 'html' },
+      { test: /\.html/, loader: 'file?name=[name].[ext]' },
       { test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url' }
     ]
   }
 };
+
+
