@@ -1,7 +1,7 @@
 var ExtractPlugin = require('extract-text-webpack-plugin');
 
 var plugins = [
-  new ExtractPlugin('bundle.css'), //To extract CSS
+  new ExtractPlugin('main.css'), //To extract CSS
 ];
 
 module.exports = {
