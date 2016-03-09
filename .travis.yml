@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "4.1"
+script:
+  - npm run build
+after_success: bash ./scripts/deploy
+branches:
+  only:
+    - master
+env:
+  global:
+  - GH_REF: github.com/Vizzuality/caf-map
+
