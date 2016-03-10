@@ -10,4 +10,3 @@ branches:
 env:
   global:
   - GH_REF: github.com/Vizzuality/caf-map
-  - secure: 3aae2f874252836303d0ec789223bf8d0b79fb57
