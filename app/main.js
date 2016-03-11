@@ -1,14 +1,7 @@
 require('./styles.scss');
 
-var $ = require('jquery');
-var _ = require('underscore');
-var backbone = require('backbone');
+var App = require('./scripts/app');
 
-var app = require('./scripts/app');
+new App();
 
-$(function() {
-  var App = new app();
-});
-
-
-
+Backbone.history.start({ pushState: false });

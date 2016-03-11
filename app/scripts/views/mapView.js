@@ -1,14 +1,20 @@
 define([
   'jquery', 
   'backbone'
-], function($, Backbone) {
+], function($, Backbone, mapboxgl) {
   
   'use strict';
 
   var MapView = Backbone.View.extend({
 
+    el: '#map',
+
     initialize: function() {
-      console.log('hello from map view')
+      this.createMap();
+    },
+
+    createMap: function() {
+
     }
 
   });
