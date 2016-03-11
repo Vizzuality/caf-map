@@ -19,6 +19,9 @@ module.exports = {
   plugins: plugins,
 
   module: {
+    preLoaders: [
+      { test: /\.json$/, loader: 'json' }
+    ],
     loaders: [
       { test: /\.scss/, loader: ExtractPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader') },
       { test: /\.html/, loader: 'file?name=[name].[ext]' },

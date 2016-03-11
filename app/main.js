@@ -1,6 +1,6 @@
 require('./styles.scss');
 
-var App = require('./scripts/app');
+var App = require('./js/app');
 
 new App();
 

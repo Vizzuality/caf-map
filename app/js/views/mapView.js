@@ -1,8 +1,7 @@
 define([
   'jquery', 
-  'backbone',
-  'mapbox-gl'
-], function($, Backbone, mapboxgl) {
+  'backbone'
+], function($, Backbone) {
   
   'use strict';
 
@@ -22,7 +21,7 @@ define([
     },
 
     createMap: function() {
-      this.map = new mapboxgl.Map({ this.options });
+      this.map = new mapboxgl.Map( this.options );
     }
 
   });
