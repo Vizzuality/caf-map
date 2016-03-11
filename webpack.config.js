@@ -10,7 +10,7 @@ module.exports = {
 
   context: path.join(__dirname, 'app'),
 
-  entry:  ['./app.js', './index.html'],
+  entry:  ['./main.js', './index.html'],
   output: {
     path:     path.join(__dirname, 'build'),
     filename: 'main.js'
