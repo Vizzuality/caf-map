@@ -25,7 +25,8 @@ module.exports = {
     loaders: [
       { test: /\.scss/, loader: ExtractPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader') },
       { test: /\.html/, loader: 'file?name=[name].[ext]' },
-      { test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url' }
+      { test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url' },
+      { test: /\.handlebars$/, loader: 'handlebars-loader' }
     ]
   },
 

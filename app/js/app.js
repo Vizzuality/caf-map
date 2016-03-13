@@ -3,8 +3,9 @@ define([
   'jquery', 
   'backbone',
   './routers/router',
-  './views/mapView'
-], function($, Backbone, Router, MapView) {
+  './views/mapView',
+  './views/dashboardFiltersView'
+], function($, Backbone, Router, MapView, DashboardFilterView) {
   
   'use strict';
 
@@ -14,24 +15,35 @@ define([
       this.router = new Router();
 
       this._setRouterListeners();
-      this._setMapListeners();
-      this._setDashboardListeners();
     },
 
     _setRouterListeners: function() {
-      this.listenTo(this.router.state, "change:init", this._init);
+      this.listenTo(this.router.state, 'change:init', this._init);
     },
 
     _setMapListeners: function() {
-
+      this.listenTo(this.map.state, 'change', this._somethingNew);
     },
 
     _setDashboardListeners: function() {
-
+      this.listenTo(this.filters.state, 'change:location', this._setLocation);
     },
 
     _init: function() {
       this.map = new MapView();
+      this.filters = new DashboardFilterView();
+
+      this._setMapListeners();
+      this._setDashboardListeners();
+    },
+
+    _setLocation: function() {
+      var location = this.filters.state.get('location');
+      this.map.state.set('location', location);
+    },
+
+    _somethingNew: function() {
+      
     }
   });
 

@@ -20,7 +20,7 @@ define([
     _home: function(params) {
 
       if (params) {
-        this.state.set({ 'params': params })
+        this.state.set({ 'params': params });
       } 
       
       this.state.set({ 'init': true });
