@@ -32,6 +32,9 @@ define([
     _createMap: function() {
       mapboxgl.accessToken = 'pk.eyJ1IjoiZGhha2VsaWxhIiwiYSI6InRkODNmdzAifQ.1aPjRitXRLOeocZSZ5jqAw';
       this.map = new mapboxgl.Map( this.options );
+
+      // Add zoom and rotation controls to the map.
+      this.map.addControl(new mapboxgl.Navigation());
     },
 
     _moveMap: function() {

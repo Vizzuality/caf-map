@@ -13,12 +13,22 @@ define([
 
     initialize: function() {
       this.router = new Router();
+      this.map = new MapView();
+      this.filters = new DashboardFilterView();
 
+      this._setMapListeners();
       this._setRouterListeners();
+      this._setDashboardListeners();
+
+      this._initApp();
+    },
+
+    _initApp: function() {
+      Backbone.history.start({ pushState: false });
     },
 
     _setRouterListeners: function() {
-      this.listenTo(this.router.state, 'change:init', this._init);
+      
     },
 
     _setMapListeners: function() {
@@ -29,13 +39,6 @@ define([
       this.listenTo(this.filters.state, 'change:location', this._setLocation);
     },
 
-    _init: function() {
-      this.map = new MapView();
-      this.filters = new DashboardFilterView();
-
-      this._setMapListeners();
-      this._setDashboardListeners();
-    },
 
     _setLocation: function() {
       var location = this.filters.state.get('location');

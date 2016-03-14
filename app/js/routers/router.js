@@ -23,7 +23,7 @@ define([
         this.state.set({ 'params': params });
       } 
       
-      this.state.set({ 'init': true });
+      // this.state.set({ 'init': true });
     }
 
   });
