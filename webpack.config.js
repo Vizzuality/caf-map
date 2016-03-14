@@ -10,7 +10,7 @@ module.exports = {
 
   context: path.join(__dirname, 'app'),
 
-  entry:  ['./app.js', './index.html'],
+  entry:  ['./main.js', './index.html'],
   output: {
     path:     path.join(__dirname, 'build'),
     filename: 'main.js'
@@ -19,10 +19,14 @@ module.exports = {
   plugins: plugins,
 
   module: {
+    preLoaders: [
+      { test: /\.json$/, loader: 'json' }
+    ],
     loaders: [
       { test: /\.scss/, loader: ExtractPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader') },
       { test: /\.html/, loader: 'file?name=[name].[ext]' },
-      { test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url' }
+      { test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url' },
+      { test: /\.handlebars$/, loader: 'handlebars-loader' }
     ]
   },
 
