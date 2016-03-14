@@ -1,7 +1,7 @@
 define([
   'jquery', 
   'backbone',
-  '../templates/filtersTpl.handlebars'
+  '../templates/dashboardFiltersTpl.handlebars'
 ], function($, Backbone, tpl) {
   
   'use strict';
@@ -10,7 +10,7 @@ define([
 
   var DashboardFilterView = Backbone.View.extend({
 
-    el: '#dashBoardFilters',
+    el: '#dashboardFilters',
 
     events: {
       'change select' : '_setData'

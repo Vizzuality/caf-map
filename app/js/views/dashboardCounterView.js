@@ -1,16 +1,16 @@
 define([
   'jquery', 
   'backbone',
-  '../templates/dashboardListTpl.handlebars'
+  '../templates/dashboardCounterTpl.handlebars'
 ], function($, Backbone, tpl) {
   
   'use strict';
 
   var StateModel = Backbone.Model.extend({});
 
-  var DashboardListView = Backbone.View.extend({
+  var DashboardCounterView = Backbone.View.extend({
 
-    el: '#dashboardList',
+    el: '#dashboardCounter',
 
     events: {
     },
@@ -26,5 +26,5 @@ define([
 
   });
 
-  return DashboardListView;
+  return DashboardCounterView;
 });
