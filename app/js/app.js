@@ -60,7 +60,14 @@ define([
     },
 
     _setDashboardListeners: function() {
+      //Filters
       this.listenTo(this.dashboardFilters.state, 'change:location', this._setLocation);
+
+      //List
+
+      //Sorting
+
+      //Counter
     },
 
 
