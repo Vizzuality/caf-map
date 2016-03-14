@@ -22,6 +22,7 @@ define([
 
       this.collection = new DashboardService();
       this.collection.fetch().done(_.bind(function() {
+        this.data = this.collection.toJSON();
         this.render();
       }, this));
 
@@ -32,15 +33,16 @@ define([
       this.listenTo(this.state, 'change:filter', this._filterProjects);
     },
 
-    render: function() {
-      this.$el.html(tpl({ 'projects': this.collection.toJSON() }));
+    render: function(data) {
+      this.$el.html(tpl({ 'projects': this.data }));
     },
 
     _filterProjects: function() {
-      this.state.get('filter');
+      var filter = this.state.get('filter');
+      this.data = _.where(this.collection.toJSON(), filter);
+
+      this.render();
     }
-
-
 
   });
 

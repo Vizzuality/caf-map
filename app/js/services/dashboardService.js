@@ -7,10 +7,6 @@ define([
 
   var DashboardService = CartoDBCollection.extend({
 
-    dataForList: function(){
-
-    }
-
   });
 
   return DashboardService;
