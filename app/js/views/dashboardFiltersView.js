@@ -1,8 +1,10 @@
 define([
   'jquery', 
+  'underscore',
   'backbone',
+  '../services/dashboardService',
   '../templates/dashboardFiltersTpl.handlebars'
-], function($, Backbone, tpl) {
+], function($, _, Backbone, DashboardService, tpl) {
   
   'use strict';
 
@@ -18,16 +20,24 @@ define([
 
     initialize: function() {
       this.state = new StateModel();
-      this.render();
+      this.collection = new DashboardService();
+      this.collection.fetch().done(_.bind(function() {
+        this.render();
+      }, this));
     },
 
     render: function() {
-      this.$el.html(tpl);
+      this.$el.html(tpl({ 'projects': this.collection.toJSON() }));
     },
 
     _setData: function(e) {
-      var latLong = $(e.currentTarget).val();
-      this.state.set('location', latLong);
+      var type = $(e.currentTarget).attr('id');
+      var option = $(e.currentTarget).val();
+
+      var filter = {};
+      filter[type] = option;
+
+      this.state.set( 'filter', filter );
     }
 
   });

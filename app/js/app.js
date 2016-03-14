@@ -61,7 +61,7 @@ define([
 
     _setDashboardListeners: function() {
       //Filters
-      this.listenTo(this.dashboardFilters.state, 'change:location', this._setLocation);
+      this.listenTo(this.dashboardFilters.state, 'change:filter', this._setFilter);
 
       //List
 
@@ -71,9 +71,9 @@ define([
     },
 
 
-    _setLocation: function() {
-      var location = this.dashboardFilters.state.get('location');
-      this.map.state.set('location', location);
+    _setFilter: function() {
+      var filter = this.dashboardFilters.state.get('filter');
+      this.dashboardList.state.set('filter', filter);
     },
 
     _somethingNew: function() {

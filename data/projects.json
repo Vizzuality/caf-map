@@ -61,7 +61,7 @@
     "organismo_ejecutor": "Portugal Goverment",
     "description": "Project 4 . Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, ad, fugiat? Libero doloribus provident quidem omnis, consequuntur officiis. Adipisci nesciunt, voluptatem ducimus voluptates sed tempore asperiores! Velit iste, voluptate nisi.",
     "objectives": "build up a better world",
-    "location": "Lisboa", 
+    "location": "Lisbon", 
     "geometry": {
       "type": "Point",
       "coordinates": [-9.14,38.73]
