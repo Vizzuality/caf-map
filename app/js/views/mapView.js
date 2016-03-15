@@ -70,6 +70,8 @@ define([
     _filterCollection: function() {
       var filter = this.state.get('filter');
       this.filteredCollection = this.collection.where(filter);
+
+      //Now, redraw markers https://www.mapbox.com/mapbox-gl-js/example/filter-markers/
     }
 
   });
