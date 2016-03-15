@@ -40,43 +40,6 @@ define([
 
       // Add zoom and rotation controls to the map.
       this.map.addControl(new mapboxgl.Navigation());
-
-      this._addData();
-    },
-
-    _addData: function() {
-      this.map.on('style.load', _.bind(function () {
-      
-                // add geojson data as a new source
-                this.map.addSource("symbols", {
-                    "type": "geojson",
-                    "data": {
-                        "type": "FeatureCollection",
-                        "features": [
-                            {
-                                "type": "Feature",
-                                "properties": {},
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [-3.7, 40.41]
-                                }
-                            }
-                        ]
-                    }
-                });
-      
-                // add source as a layer and apply some styles
-                this.map.addLayer({
-                    "id": "symbols",
-                    "interactive": true,
-                    "type": "symbol",
-                    "source": "symbols",
-                    "layout": {
-                        "icon-image": "marker-15"
-                    },
-                    "paint": {}
-                });
-            }, this));
     },
 
     _moveMap: function() {
