@@ -44,10 +44,10 @@
     "organismo_ejecutor": "German Goverment",
     "description": "Project 3 . Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, ad, fugiat? Libero doloribus provident quidem omnis, consequuntur officiis. Adipisci nesciunt, voluptatem ducimus voluptates sed tempore asperiores! Velit iste, voluptate nisi.",
     "objectives": "build up a better world",
-    "location": "Toulouse", 
+    "location": "Berlin", 
     "geometry": {
       "type": "Point",
-      "coordinates": [1.44,43.60]
+      "coordinates": [13.409,52.52]
     } 
   },
   { 
@@ -65,6 +65,23 @@
     "geometry": {
       "type": "Point",
       "coordinates": [-9.14,38.73]
+    } 
+  },
+  { 
+    "id": 5,
+    "name": "Project 5",
+    "date": "10-03-2000",
+    "country": "Germany",
+    "amount": 5.000,
+    "status": "finish",
+    "client": "German Goverment",
+    "organismo_ejecutor": "German Goverment",
+    "description": "Project 5 . Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, ad, fugiat? Libero doloribus provident quidem omnis, consequuntur officiis. Adipisci nesciunt, voluptatem ducimus voluptates sed tempore asperiores! Velit iste, voluptate nisi.",
+    "objectives": "build up a better world",
+    "location": "Berlin", 
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.409,52.52]
     } 
   }
 ]

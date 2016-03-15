@@ -1,7 +1,9 @@
 define([
   'jquery', 
-  'backbone'
-], function($, Backbone) {
+  'underscore',
+  'backbone',
+  '../services/mapService'
+], function($, _, Backbone, MapService) {
   
   'use strict';
 
@@ -15,12 +17,15 @@ define([
       container: 'map',
       style: 'mapbox://styles/dhakelila/cillcfizt007fbilxgw2ygr05',
       center: [-3.7, 40.41],
-      zoom: 9
+      zoom: 3
     },
 
     initialize: function() {
       this.state = new StateModel();
-      this._createMap();
+      this.collection = new MapService();
+      this.collection.fetch().done(_.bind(function() {
+        this._createMap();
+      }, this));
 
       this._setListeners();
     },
@@ -35,6 +40,43 @@ define([
 
       // Add zoom and rotation controls to the map.
       this.map.addControl(new mapboxgl.Navigation());
+
+      this._addData();
+    },
+
+    _addData: function() {
+      this.map.on('style.load', _.bind(function () {
+      
+                // add geojson data as a new source
+                this.map.addSource("symbols", {
+                    "type": "geojson",
+                    "data": {
+                        "type": "FeatureCollection",
+                        "features": [
+                            {
+                                "type": "Feature",
+                                "properties": {},
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [-3.7, 40.41]
+                                }
+                            }
+                        ]
+                    }
+                });
+      
+                // add source as a layer and apply some styles
+                this.map.addLayer({
+                    "id": "symbols",
+                    "interactive": true,
+                    "type": "symbol",
+                    "source": "symbols",
+                    "layout": {
+                        "icon-image": "marker-15"
+                    },
+                    "paint": {}
+                });
+            }, this));
     },
 
     _moveMap: function() {

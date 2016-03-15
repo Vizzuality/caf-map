@@ -73,6 +73,7 @@ define([
 
     _setFilter: function() {
       var filter = this.dashboardFilters.state.get('filter');
+      
       this.dashboardList.state.set('filter', filter);
     },
 
