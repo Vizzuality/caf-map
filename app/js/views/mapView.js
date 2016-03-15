@@ -15,7 +15,7 @@ define([
 
     options: {
       container: 'map',
-      style: 'mapbox://styles/dhakelila/cillcfizt007fbilxgw2ygr05',
+      style: 'mapbox://styles/mapbox/streets-v8',
       center: [-3.7, 40.41],
       zoom: 3
     },
@@ -32,6 +32,9 @@ define([
 
     _setListeners: function() {
       this.listenTo(this.state, 'change:location', this._moveMap);
+      this.listenTo(this.state, 'change:filter', this._filterCollection);
+
+      this.listenTo(this.collection, 'change', this._addMarkers);
     },
 
     _createMap: function() {
@@ -40,6 +43,8 @@ define([
 
       // Add zoom and rotation controls to the map.
       this.map.addControl(new mapboxgl.Navigation());
+
+      this.map.on('style.load', _.bind(this._addMarkers, this));
     },
 
     _moveMap: function() {
@@ -51,6 +56,37 @@ define([
         'center': [ longitud , latitud  ]
       });
 
+    },
+
+    _addMarkers: function() {
+      console.log('si');
+      this.markers = this.collection.getMarkers();
+
+      // Add marker data as a new GeoJSON source.
+      this.map.addSource("markers", {
+        "type": "geojson",
+        "data": this.markers
+      });
+
+      // Add a layer showing the markers.
+      this.map.addLayer({
+        "id": "markers",
+        "interactive": true,
+        "type": "symbol",
+        "source": "markers",
+        "layout": {
+          "icon-image": "marker-15",
+          "icon-allow-overlap": true
+        }
+      });
+    },
+
+    _filterCollection: function() {
+      var filter = this.state.get('filter');
+      var filteredCollection = this.collection.where(filter);
+      console.log(filteredCollection);
+
+      this.
     }
 
   });

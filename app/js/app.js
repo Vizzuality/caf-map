@@ -75,6 +75,7 @@ define([
       var filter = this.dashboardFilters.state.get('filter');
       
       this.dashboardList.state.set('filter', filter);
+      this.map.state.set('filter', filter);
     },
 
     _somethingNew: function() {
