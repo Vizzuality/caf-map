@@ -32,12 +32,11 @@ define([
 
     _setListeners: function() {
       this.listenTo(this.state, 'change:filter', this._filterCollection);
-
-      this.listenTo(this.collection, 'change', this._addMarkers);
     },
 
     _createMap: function() {
       mapboxgl.accessToken = 'pk.eyJ1IjoiZGhha2VsaWxhIiwiYSI6InRkODNmdzAifQ.1aPjRitXRLOeocZSZ5jqAw';
+
       this.map = new mapboxgl.Map( this.options );
 
       // Add zoom and rotation controls to the map.
@@ -46,8 +45,8 @@ define([
       this.map.on('style.load', _.bind(this._addMarkers, this));
     },
 
-    _addMarkers: function(data) {
-      this.markers = this.collection.getMarkers(data);
+    _addMarkers: function() {
+      this.markers = this.collection.getMarkers(this.filteredCollection);
 
       // Add marker data as a new GeoJSON source.
       this.map.addSource("markers", {
@@ -70,10 +69,7 @@ define([
 
     _filterCollection: function() {
       var filter = this.state.get('filter');
-      var filteredCollection = this.collection.where(filter);
-      console.log(filteredCollection);
-
-      this._addMarkers(filteredCollection);
+      this.filteredCollection = this.collection.where(filter);
     }
 
   });

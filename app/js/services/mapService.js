@@ -28,11 +28,12 @@ define([
 
     initialize: function() {},
 
-    getMarkers: function(data) {
-      var currentData = data ? data : this.models;
+    getMarkers: function() {
+      var data = this.models;
 
-      _.each(currentData, _.bind(function(i){
+      _.each(data, _.bind(function(i){
         var newmarker = _.clone(this.defaultFeature);
+        
         newmarker.properties.title = i.get('name');
         newmarker.properties.description = i.get('description');
         newmarker.geometry = i.get('geometry');
