@@ -31,7 +31,6 @@ define([
     },
 
     _setListeners: function() {
-      this.listenTo(this.state, 'change:location', this._moveMap);
       this.listenTo(this.state, 'change:filter', this._filterCollection);
 
       this.listenTo(this.collection, 'change', this._addMarkers);
@@ -47,20 +46,8 @@ define([
       this.map.on('style.load', _.bind(this._addMarkers, this));
     },
 
-    _moveMap: function() {
-      var newCenter = this.state.get('location');
-      var longitud = newCenter.split(',')[0];
-      var latitud = newCenter.split(',')[1];
-
-      this.map.flyTo({
-        'center': [ longitud , latitud  ]
-      });
-
-    },
-
-    _addMarkers: function() {
-      console.log('si');
-      this.markers = this.collection.getMarkers();
+    _addMarkers: function(data) {
+      this.markers = this.collection.getMarkers(data);
 
       // Add marker data as a new GeoJSON source.
       this.map.addSource("markers", {
@@ -86,7 +73,7 @@ define([
       var filteredCollection = this.collection.where(filter);
       console.log(filteredCollection);
 
-      this.
+      this._addMarkers(filteredCollection);
     }
 
   });
